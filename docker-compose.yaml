@@ -1,0 +1,89 @@
+version: "3.8"
+
+services:
+  rhubarb:
+    image: spurin/snooze:latest
+    container_name: rhubarb
+    environment:
+      PORT: "8081"
+      MESSAGE: |
+        <html>
+          <body style="margin:0; font-family:sans-serif; text-align:center; background:#872657; color:white; padding:2rem;">
+            <h1 style="margin: 0 0 1rem;">Hello from rhubarb!</h1>
+            <a href="http://fbi.com"
+               style="display:inline-block; padding:0.75rem 1.5rem;
+                      background:white; color:#872657; border-radius:8px; text-decoration:none; font-weight:bold;">
+              &larr; Back to Home
+            </a>
+          </body>
+        </html>
+    expose:
+      - "8081"
+
+  blueberry:
+    image: spurin/snooze:latest
+    container_name: blueberry
+    environment:
+      PORT: "8082"
+      MESSAGE: |
+        <html>
+          <body style="margin:0; font-family:sans-serif; text-align:center; background:#4F86F7; color:white; padding:2rem;">
+            <h1 style="margin: 0 0 1rem;">Hello from blueberry!</h1>
+            <a href="http://fbi.com"
+               style="display:inline-block; padding:0.75rem 1.5rem;
+                      background:white; color:#4F86F7; border-radius:8px; text-decoration:none; font-weight:bold;">
+              &larr; Back to Home
+            </a>
+          </body>
+        </html>
+    expose:
+      - "8082"
+
+  banana:
+    image: spurin/snooze:latest
+    container_name: banana
+    environment:
+      PORT: "8083"
+      MESSAGE: |
+        <html>
+          <body style="margin:0; font-family:sans-serif; text-align:center; background:#FFE135; color:black; padding:2rem;">
+            <h1 style="margin: 0 0 1rem;">Hello from banana!</h1>
+            <a href="http://fbi.com"
+               style="display:inline-block; padding:0.75rem 1.5rem;
+                      background:black; color:#FFE135; border-radius:8px; text-decoration:none; font-weight:bold;">
+              &larr; Back to Home
+            </a>
+          </body>
+        </html>
+    expose:
+      - "8083"
+
+  lime:
+    image: spurin/snooze:latest
+    container_name: lime
+    environment:
+      PORT: "8084"
+      MESSAGE: |
+        <html>
+          <body style="margin:0; font-family:sans-serif; text-align:center; background:#32CD32; color:white; padding:2rem;">
+            <h1 style="margin: 0 0 1rem;">Hello from lime!</h1>
+            <a href="http://fbi.com"
+               style="display:inline-block; padding:0.75rem 1.5rem;
+                      background:white; color:#32CD32; border-radius:8px; text-decoration:none; font-weight:bold;">
+              &larr; Back to Home
+            </a>
+          </body>
+        </html>
+    expose:
+      - "8084"
+
+  nginx:
+    image: fbi-nginx
+    container_name: reverse-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - rhubarb
+      - blueberry
+      - banana
+      - lime

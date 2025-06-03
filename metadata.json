@@ -1,0 +1,13 @@
+{
+  "icon": "icon.svg",
+  "vm": {
+    "composefile": "docker-compose.yaml"
+  },
+  "ui": {
+    "dashboard-tab": {
+      "title": "FBI Test",
+      "src": "index.html",
+      "root": "ui"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FBI Test - Wildcard Routing</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f2f2f2;
+      padding: 2rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .info {
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .card {
+      flex: 1 1 200px;
+      text-align: center;
+      padding: 1.2rem;
+      color: #fff;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .rhubarb { background: #872657; }
+    .blueberry { background: #4F86F7; }
+    .banana { background: #FFE135; color: #333; }
+    .lime { background: #32CD32; }
+
+  </style>
+</head>
+<body>
+  <h1>🕵️‍♀️ FBI Test — Wildcard Routing Demo</h1>
+  <div class="info">
+    <p>This project uses Docker Compose and an Nginx reverse proxy to demonstrate dynamic routing with a wildcard domain: <strong><code>*.fbi.com</code></strong>.</p>
+    <p>The current page is being served using localhost via <a href="http://fbi.com"><strong><code>http://fbi.com</code></strong></a></p>
+    <p>fbi.com is setup with wildcard dns that points to 127.0.0.1, we are re-using this for example purposes.</p>
+    <p>Each service runs a tiny HTTP server (using the <a href="https://github.com/spurin/snooze"><strong><code>spurin/snooze</code></strong></a> container), and can be accessed via the format: <strong><code>PORT.NAME.fbi.com</code></strong>.</p>
+    <p>For example, <a href="http://8081.rhubarb.fbi.com"><strong><code>http://8081.rhubarb.fbi.com</code></strong></a> routes to the container named <strong><code>rhubarb</code></strong> on port <strong><code>8081</code></strong>.</p>
+  </div>
+
+  <div class="cards">
+    <a class="card rhubarb" href="http://8081.rhubarb.fbi.com">🍇 rhubarb<small> (http://8081.rhubarb.fbi.com)</small></a>
+    <a class="card blueberry" href="http://8082.blueberry.fbi.com">🫐 blueberry<small> (http://8082.blueberry.fbi.com)</small></a>
+    <a class="card banana" href="http://8083.banana.fbi.com">🍌 banana<small> (http://8083.banana.fbi.com)</small></a>
+    <a class="card lime" href="http://8084.lime.fbi.com">🍈 lime<small> (http://8084.lime.fbi.com)</small></a>
+  </div>
+</body>
+</html>
